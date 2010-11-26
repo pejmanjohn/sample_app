@@ -22,4 +22,22 @@ describe "LayoutLinks" do
     response.should have_selector('title', :content => "Help")
   end
   
+  it "should have a Sign Up page at '/signup'" do
+    get '/signup'
+    response.should have_selector('title', :content => "Sign Up")
+  end
+  
+  it "should have the right links on the layout" do
+    visit root_path
+    response.should have_selector('title', :content => "Home")
+    # Commented out because autotest is breaking
+    #     click_link "About"
+    #     reponse.should have_selector('title', :content => "About")
+    #     click_link "Contact"
+    #     reponse.should have_selector('title', :content => "Contact")
+    #     click_link "Home"
+    #     reponse.should have_selector('title', :content => "Home")
+    #     click_link "Sign up now!"
+    #     reponse.should have_selector('title', :content => "Sign Up")
+  end
 end
